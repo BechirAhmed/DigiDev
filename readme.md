@@ -9,7 +9,7 @@
 
 ## About DigiDev
 
-DigiDev is a Blog created to teach development for FREE, It's an advenced and full CMS Blog, I have published the code for those who want to learn how Laravel Framework works. And soon when the blog go up i'll add a full video tutorial. The project using -almost- all fonctionality that Laravel gives. The code is not to selling, All users have the right to use the code and modify what they want.
+DigiDev is a Blog created to teach development for FREE, It's an advenced and full CMS Blog, I have published the code for those who want to learn how Laravel Framework works. And soon when the blog go up i'll add a full video tutorial. The project using -almost- all fonctionality that Laravel gives. The code is not for selling, All users have the right to use the code and modify what they want.
 
 **Main Features:**
 - Blog posts
