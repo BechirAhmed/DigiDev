@@ -1,16 +1,40 @@
-.side-menu {
+#admin-side-menu {
   position: fixed;
   height: 100vh;
   width: 250px;
+  top: 3.3rem;
+  bottom: 0;
+  left: -250px;
   background-color: white;
-  overflow-y: scroll;
+  // overflow-y: scroll;
+  transition: left 0.3s ease-in-out;
+  &.is-active {
+    transition: left 0.3s ease-in-out;
+    left: 0;
+  }
+
+  @include desktop {
+    left: 0;
+  }
+}
+
+#admin-slideout-btn {
+  transition: 0.3s;
+  &.is-active {
+    transition: 0.3s;
+    transform: rotateY(180deg);
+  }
 }
 
 .managemeng-area {
   position: absolute;
   top: 5rem;
-  left: 250px;
+  left: 0;
   right: 0;
+
+  @include desktop {
+    left: 250px;
+  }
 }
 
 .flex-container {
@@ -26,4 +50,62 @@
 .menu-list li ul {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.widget-area {
+  min-height: 75px;
+  padding: 10px;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+
+  &.author-widget > .selected-author {
+      display: flex;
+      align-content: flex-start;
+      img {
+        border-radius: 25px;
+      }
+      .author {
+        margin: auto 0 auto 10px;
+        .subtitle {
+          font-weight: 300;
+          font-size: 0.8em;
+        }
+      }
+    }
+
+  &.post-status-widget{
+     .status {
+        display: flex;
+        align-content: flex-start;
+        .status-icon {
+          min-width: 50px;
+          margin-left: -10px;
+          .icon {
+            width: 100%;
+            text-align: center;
+
+        }
+      }
+        .status-details {
+          h4 {
+            font-weight: 800;
+            span.status-emphasis {
+              font-weight: 400;
+            }
+          }
+          p {
+            font-weight: 300;
+            font-size: 0.8em;
+          }
+        }
+      }
+    }
+    &.publish-buttons-widget {
+      display: flex;
+      min-height: 50px;
+
+      .primary-action-button, .secondary-action-button {
+        flex: 1;
+        margin: 0 5px;
+      }
+    }
 }

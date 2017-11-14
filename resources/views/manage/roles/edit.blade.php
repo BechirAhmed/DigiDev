@@ -7,7 +7,7 @@
         <h1 class="subtitle">Edit {{ $role->display_name }}</h1>
       </div>
       <div class="column">
-        <a href="{{ route('roles.edit', $role->id) }}" class="button is-primary is-pulled-right">Edit this Role</a>
+        <button type="submit" class="button is-success is-pulled-right">Save changes to Role</button>
       </div>
     </div>
     <hr class="m-t-0">
@@ -67,7 +67,7 @@
           </div>
         </div>
       </div>
-      <button type="submit" class="button is-success">Save changes to Role</button>
+      <button type="submit" class="button is-success is-pulled-right">Save changes to Role</button>
     </form>
   </div>
 @endsection

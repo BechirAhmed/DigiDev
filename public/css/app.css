@@ -16179,25 +16179,16 @@ label.panel-block:hover {
   background: rgba(255, 56, 96, 0.05);
 }
 
-.navbar {
-  border-bottom: 1px solid #ccc;
-  height: 4.5rem;
-}
-
-.navbar-item img {
-  max-height: 2.8rem;
-}
-
-.navbar-menu .navbar-item .is-tab {
-  min-height: 4.5rem;
-}
-
 .is-muted {
   color: #b5b5b5 !important;
 }
 
 a.is-muted:hover {
   color: #7a7a7a !important;
+}
+
+.navbar-burger {
+  border: none;
 }
 
 .m-t-5 {
@@ -16584,19 +16575,53 @@ a.is-muted:hover {
   padding-right: 100px !important;
 }
 
-.side-menu {
+#admin-side-menu {
   position: fixed;
   height: 100vh;
   width: 250px;
+  top: 3.3rem;
+  bottom: 0;
+  left: -250px;
   background-color: white;
-  overflow-y: scroll;
+  -webkit-transition: left 0.3s ease-in-out;
+  transition: left 0.3s ease-in-out;
+}
+
+#admin-side-menu.is-active {
+  -webkit-transition: left 0.3s ease-in-out;
+  transition: left 0.3s ease-in-out;
+  left: 0;
+}
+
+@media screen and (min-width: 1024px) {
+  #admin-side-menu {
+    left: 0;
+  }
+}
+
+#admin-slideout-btn {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+#admin-slideout-btn.is-active {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
 }
 
 .managemeng-area {
   position: absolute;
   top: 5rem;
-  left: 250px;
+  left: 0;
   right: 0;
+}
+
+@media screen and (min-width: 1024px) {
+  .managemeng-area {
+    left: 250px;
+  }
 }
 
 .flex-container {
@@ -16613,6 +16638,79 @@ a.is-muted:hover {
 .menu-list li ul {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.widget-area {
+  min-height: 75px;
+  padding: 10px;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+}
+
+.widget-area.author-widget > .selected-author {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+}
+
+.widget-area.author-widget > .selected-author img {
+  border-radius: 25px;
+}
+
+.widget-area.author-widget > .selected-author .author {
+  margin: auto 0 auto 10px;
+}
+
+.widget-area.author-widget > .selected-author .author .subtitle {
+  font-weight: 300;
+  font-size: 0.8em;
+}
+
+.widget-area.post-status-widget .status {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+}
+
+.widget-area.post-status-widget .status .status-icon {
+  min-width: 50px;
+  margin-left: -10px;
+}
+
+.widget-area.post-status-widget .status .status-icon .icon {
+  width: 100%;
+  text-align: center;
+}
+
+.widget-area.post-status-widget .status .status-details h4 {
+  font-weight: 800;
+}
+
+.widget-area.post-status-widget .status .status-details h4 span.status-emphasis {
+  font-weight: 400;
+}
+
+.widget-area.post-status-widget .status .status-details p {
+  font-weight: 300;
+  font-size: 0.8em;
+}
+
+.widget-area.publish-buttons-widget {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 50px;
+}
+
+.widget-area.publish-buttons-widget .primary-action-button,
+.widget-area.publish-buttons-widget .secondary-action-button {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin: 0 5px;
 }
 
 html {

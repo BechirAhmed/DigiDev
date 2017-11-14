@@ -1,15 +1,15 @@
-.navbar {
-  border-bottom: 1px solid #ccc;
-  height: 4.5rem;
-}
-
-.navbar-item img {
-  max-height: 2.8rem;
-}
-
-.navbar-menu .navbar-item .is-tab{
-  min-height: 4.5rem;
-}
+// .navbar {
+//   border-bottom: 1px solid #ccc;
+//   height: 4.5rem;;
+// }
+//
+// .navbar-item img {
+//   max-height: 2.8rem;
+// }
+//
+// .navbar-menu .navbar-item .is-tab{
+//   min-height: 4.5rem;
+// }
 
 .is-muted {
   color: $grey-light !important;
@@ -17,4 +17,8 @@
 
 a.is-muted:hover {
   color: $grey !important;
+}
+
+.navbar-burger {
+  border: none;
 }

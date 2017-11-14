@@ -1,13 +1,22 @@
 
 <nav class="navbar has-shadow" role="navigation" aria-label="dropdown navigation">
   <div class="navbar-brand ">
-    <a href="{{ route('home') }}" class="navbar-item is-paddingless">
-      <img src="{{asset('images/logo.png')}}" alt="DigiDev">
-    </a>
+
+    @if (Request::segment(1) == "manage")
+      <a class="navbar-item is-hidden-desktop" id="admin-slideout-btn">
+        <span class="icon"><i class="fa fa-arrow-circle-o-right"></i></span>
+      </a>
+    @endif
+
+      <a href="{{ route('home') }}" class="navbar-item is-paddingless">
+        <img src="{{asset('images/logo.png')}}" alt="DigiDev">
+      </a>
+
 
     <a href="#" class="navbar-item is-tab is-hidden-mobile m-l-10 is-active">Learn</a>
     <a href="#" class="navbar-item is-tab is-hidden-mobile">Discuss</a>
     <a href="#" class="navbar-item is-tab is-hidden-mobile">Share</a>
+
 
     <button class="button navbar-burger" data-target="navMenu">
       <span></span>
