@@ -13,12 +13,12 @@
       </a>
 
 
-    <a href="#" class="navbar-item is-tab is-hidden-mobile m-l-10 is-active">Learn</a>
+    <a href="#" class="navbar-item is-tab is-hidden-mobile m-l-10">Learn</a>
     <a href="#" class="navbar-item is-tab is-hidden-mobile">Discuss</a>
     <a href="#" class="navbar-item is-tab is-hidden-mobile">Share</a>
 
 
-    <button class="button navbar-burger" data-target="navMenu">
+    <button class="button navbar-burger" data-target="navMenu" id="nav-burger-btn">
       <span></span>
       <span></span>
       <span></span>
@@ -28,7 +28,7 @@
   <div class="navbar-menu" id="navMenu">
     <div class="navbar-start">
       <div class="navbar-item">
-        <a href="#" class="navbar-item is-tab is-hidden-tablet is-active">Learn</a>
+        <a href="#" class="navbar-item is-tab is-hidden-tablet">Learn</a>
         <a href="#" class="navbar-item is-tab is-hidden-tablet">Discuss</a>
         <a href="#" class="navbar-item is-tab is-hidden-tablet">Share</a>
       </div>
@@ -37,8 +37,8 @@
     <div class="navbar-end">
       @guest
         <div class="navbar-item">
-          <a href="{{ route('login') }}" class="navbar-item is-tab">Login</a>
-          <a href="{{ route('register') }}" class="navbar-item is-tab">Join Our Community</a>
+          <a href="{{ route('login') }}" class="navbar-item is-tab {{ Nav::isRoute('login') }}">Login</a>
+          <a href="{{ route('register') }}" class="navbar-item is-tab {{ Nav::isRoute('register') }}">Join Our Community</a>
         </div>
 
       @else

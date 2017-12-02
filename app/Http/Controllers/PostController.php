@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('role:superadministrator|administrator|edito|author|contributor');
+  }
     /**
      * Display a listing of the resource.
      *
@@ -80,5 +85,10 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function apiCheckUnique(Request $request)
+    {
+      return json_encode(!Post::where('slug', '=', $request->slug)->exists());
     }
 }

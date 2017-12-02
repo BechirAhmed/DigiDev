@@ -1,5 +1,6 @@
 const accordions = document.getElementsByClassName('has-submenu')
 const adminSlidOutBtn = document.getElementById('admin-slideout-btn')
+const navbarBurger = document.getElementById('nav-burger-btn')
 
 
 function setSubmenuStyles(submenu, maxHeight, margins) {
@@ -11,6 +12,11 @@ function setSubmenuStyles(submenu, maxHeight, margins) {
 adminSlidOutBtn.onclick = function () {
   this.classList.toggle('is-active');
   document.getElementById('admin-side-menu').classList.toggle('is-active')
+}
+
+navbarBurger.onclick = function () {
+  this.classList.toggle('is-active');
+  document.getElementById('navMenu').classList.toggle('is-active')
 }
 
 for (var i = 0; i < accordions.length; i++) {

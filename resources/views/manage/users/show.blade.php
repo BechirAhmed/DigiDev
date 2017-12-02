@@ -3,13 +3,13 @@
 @section('content')
   <div class="flex-container">
     <div class="columns m-t-10">
-      <div class="column">
-        <a href="{{ route('users.index', $user->id) }}" class="button is-primary"><i class="fa fa-long-arrow-left"></i>&nbsp;Back to Users</a>
+      <div class="column is-one-third">
+        <a href="{{ route('users.index') }}" class="button is-primary"><i class="fa fa-long-arrow-left"></i>&nbsp;Back to Users</a>
       </div>
-      <div class="column">
-        <h1 class="subtitle is-centered">Viwe User Details</h1>
+      <div class="column  is-one-third">
+        <h1 class="title is-one">View User Details</h1>
       </div>
-      <div class="column">
+      <div class="column  is-one-third">
         <a href="{{ route('users.edit', $user->id) }}" class="button is-primary is-pulled-right"><i class="fa fa-pencil-square-o"></i>&nbsp;Edit User</a>
       </div>
     </div>
@@ -19,8 +19,18 @@
       <div class="column">
 
         <div class="field">
-          <label for="name" class="label">Name</label>
+          <label for="name" class="label">Username</label>
           <pre>{{ $user->name }}</pre>
+        </div>
+
+        <div class="field">
+          <label for="first_name" class="label">First Name</label>
+          <pre>{{ $user->first_name }}</pre>
+        </div>
+
+        <div class="field">
+          <label for="last_name" class="label">Last Name</label>
+          <pre>{{ $user->last_name }}</pre>
         </div>
 
         <div class="field">

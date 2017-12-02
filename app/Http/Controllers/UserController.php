@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-      $users = User::orderBy('id', 'desc')->paginate(10);
+      $users = User::orderBy('id', 'asc')->paginate(10);
         return view('manage.users.index')->withUsers($users);
     }
 
@@ -30,7 +30,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('manage.users.create');
+      $roles = Role::all();
+      return view('manage.users.create')->withRoles($roles);
     }
 
     /**
@@ -42,8 +43,10 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-          'name' => 'required|max:255',
-          'email' => 'required|email|unique:users'
+          'name'       => 'required|unique:users|max:255',
+          'first_name' => 'max:255',
+          'last_name'  => 'max:255',
+          'email'      => 'required|email|unique:users'
         ]);
 
       if ($request->has('password') && !empty($request->password)) {
@@ -60,13 +63,16 @@ class UserController extends Controller
       }
 
         $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($password);
+        $user->name       = $request->name;
+        $user->first_name = $request->first_name;
+        $user->last_name  = $request->last_name;
+        $user->email      = $request->email;
+        $user->password   = Hash::make($password);
 
         $user->save();
 
         if ($user->save()) {
+          $user->syncRoles(explode(',', $request->roles));
           return redirect()->route('users.show', $user->id);
         } else {
           Session::flash('danger', 'Sorry a problem occured ehile creating this user!');
@@ -109,13 +115,17 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
       $this->validate($request, [
-        'name' => 'required|max:255',
-        'email' => 'required|email|unique:users,email,'.$id
+        'name'       => 'required|max:255',
+        'first_name' => 'max:255',
+        'last_name'  => 'max:255',
+        'email'      => 'required|email|unique:users,email,'.$id
       ]);
 
       $user = User::findOrFail($id);
-      $user->name = $request->name;
-      $user->email = $request->email;
+      $user->name       = $request->name;
+      $user->first_name = $request->first_name;
+      $user->last_name  = $request->last_name;
+      $user->email      = $request->email;
 
       if ($request->password_options == 'auto') {
         $length = 10;
@@ -130,15 +140,13 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
       }
 
-      // $user->save();
-
-
+      $user->save();
 
       if ($user->save()) {
         $user->syncRoles(explode(',', $request->roles));
         return redirect()->route('users.show', $id);
       } else {
-        Session::flash('danger', 'Sorry a problem occured ehile editing this user!');
+        Session::flash('danger', 'Sorry a problem occured while editing this user!');
         return redirect()->route('users.edit', $id);
       }
     }

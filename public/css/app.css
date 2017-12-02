@@ -16578,10 +16578,10 @@ a.is-muted:hover {
 #admin-side-menu {
   position: fixed;
   height: 100vh;
-  width: 250px;
+  width: 220px;
   top: 3.3rem;
   bottom: 0;
-  left: -250px;
+  left: -220px;
   background-color: white;
   -webkit-transition: left 0.3s ease-in-out;
   transition: left 0.3s ease-in-out;
@@ -16620,12 +16620,12 @@ a.is-muted:hover {
 
 @media screen and (min-width: 1024px) {
   .managemeng-area {
-    left: 250px;
+    left: 220px;
   }
 }
 
 .flex-container {
-  margin: 10px 25px;
+  margin: 10px 15px;
 }
 
 .submenu {

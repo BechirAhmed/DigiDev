@@ -17,8 +17,11 @@
           <thead>
             <tr>
               <th>id</th>
-              <th>Name</th>
+              <th>Username</th>
+              <th>First Name</th>
+              <th>Last Name</th>
               <th>Email</th>
+              <th>Role</th>
               <th>Date Created</th>
               <th></th>
             </tr>
@@ -29,8 +32,37 @@
               <tr>
                 <th>{{ $user->id }}</th>
                 <td>{{ $user->name }}</td>
-                <td>{{ $user->email }}</td>
-                <td>{{ $user->created_at->toFormattedDateString() }}</td>
+                <td>{{ $user->first_name }}</td>
+                <td>{{ $user->last_name }}</td>
+                <td><a href="mailto:{{ $user->email }}" title="email {{ $user->email }}"><em>{{ $user->email }}</em></a></td>
+                <td>
+                  @foreach ($user->roles as $role)
+                    @if ($role->name == 'superadministrator')
+                      @php $label = 'success' @endphp
+                    @elseif ($role->name == 'administrator')
+                      @php $label = 'primary' @endphp
+                    @elseif ($role->name == 'editor')
+                      @php $label = 'info' @endphp
+                    @elseif ($role->name == 'author')
+                      @php $label = 'info' @endphp
+                    @elseif ($role->name == 'contributor')
+                      @php $label = 'light' @endphp
+                    @elseif ($role->name == 'supporter')
+                      @php $label = 'warning' @endphp
+                    @elseif ($role->name == 'subscriber')
+                      @php $label = 'danger' @endphp
+
+                    @endif
+                    <span class="tag is-{{$label}} is-rounded">
+                      <em>
+                        {{ $role->display_name }}
+                      </em>
+                    </span>
+                  @endforeach
+                </td>
+                <td style="font-size: smaller">
+                  {{ $user->created_at->toFormattedDateString() }}
+                </td>
                 <td class="has-text-right"><a class="button is-light m-r-5" href="{{ route('users.show', $user->id) }}">View</a><a class="button is-outlined" href="{{ route('users.edit', $user->id) }}">Edit</a></td>
               </tr>
 
